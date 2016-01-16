@@ -8,7 +8,7 @@ angular.module('ubicameUdeaApp.controllers', [])
 		$scope.deleteBloque = function (bloque) {
 			if (popupService.showPopup('¿Realmente quiere eliminar este registro?')) {
 				bloque.$delete(function () {
-					$window.location.href = '';
+					$scope.bloques = Bloque.query();
 				});
 			}
 		};
@@ -42,7 +42,7 @@ angular.module('ubicameUdeaApp.controllers', [])
 		$scope.deleteTipoUnidad = function (tipoUnidad) {
 			if (popupService.showPopup('¿Realmente quiere eliminar este registro?')) {
 				tipoUnidad.$delete(function () {
-					$window.location.href = '';
+					$scope.tiposUnidad = TipoUnidad.query();
 				});
 			}
 		};
@@ -77,13 +77,12 @@ angular.module('ubicameUdeaApp.controllers', [])
 			if (popupService.showPopup('¿Realmente quiere eliminar este registro?')) {
 				unidad.$delete(function () {
 					$scope.unidades = Unidad.query();
-					//$location.path('#/unidades');
 				});
 			}
 		};
 	})
 	.controller('UnidadViewController', function ($scope, $stateParams, Unidad) {
-		$scope.unidad = unidad.get({id : $stateParams.id});
+		$scope.unidad = Unidad.get({id : $stateParams.id});
 	})
 	.controller('UnidadCreateController', function ($scope,$http, $state, $stateParams, Unidad) {
 		$http.get("http://localhost:3000/tiposunidad").success(function(response) {
@@ -115,4 +114,115 @@ angular.module('ubicameUdeaApp.controllers', [])
 			$scope.unidad = Unidad.get({id : $stateParams.id});
 		};
 		$scope.loadUnidad();
-	});
+	})
+//CONTROLLERS DEPARTAMENTOS
+	.controller('DepartamentoListController', function ($scope, $state, popupService, $window, $location, Departamento) {
+		$scope.departamentos = Departamento.query();
+		$scope.deleteDepartamento = function (departamento) {
+			if (popupService.showPopup('¿Realmente quiere eliminar este registro?')) {
+				departamento.$delete(function () {
+					$scope.departamentos = Departamento.query();
+				});
+			}
+		};
+	})
+	.controller('DepartamentoViewController', function ($scope, $stateParams, Departamento) {
+		$scope.departamento = Departamento.get({id : $stateParams.id});
+	})
+	.controller('DepartamentoCreateController', function ($scope,$http, $state, $stateParams, Departamento) {
+		$http.get("http://localhost:3000/unidades").success(function(response) {
+        	$scope.unidades = response;
+    	}).error(function(err){
+			console.log(err)
+		});
+		
+		$scope.changed = function(item){
+			$scope.departamento.unidad = item;
+			$scope.unidadSeleccionada;
+		}
+	
+		$scope.departamento = new Departamento();	
+		$scope.addDepartamento = function () {
+			$scope.departamento.$save(function () {
+				$state.go('departamentos');
+			});
+		};
+	})
+	.controller('DepartamentoEditController', function ($scope, $state, $stateParams, Departamento) {
+		$scope.updateDepartamento = function () {
+			$scope.departamento.$update(function () {
+				$state.go('departamentos');
+			});
+		};
+		$scope.loadDepartamento = function () {
+			$scope.departamento = Departamento.get({id : $stateParams.id});
+		};
+		$scope.loadDepartamento();
+	})
+
+//CONTROLLERS UBICACIONES
+	.controller('UbicacionListController', function ($scope, $state, popupService, $window, $location, Ubicacion) {
+		$scope.ubicaciones = Ubicacion.query();
+		$scope.deleteUbicacion = function (ubicacion) {
+			if (popupService.showPopup('¿Realmente quiere eliminar este registro?')) {
+				ubicacion.$delete(function () {
+					$scope.ubicaciones = Ubicacion.query();
+				});
+			}
+		};
+	})
+	.controller('UbicacionViewController', function ($scope, $stateParams, Ubicacion) {
+		$scope.ubicacion = Ubicacion.get({id : $stateParams.id});
+	})
+	.controller('UbicacionCreateController', function ($scope,$http, $state, $stateParams, Ubicacion) {
+		$http.get("http://localhost:3000/unidades").success(function(response) {
+        	$scope.unidades = response;
+    	}).error(function(err){
+			console.log(err)
+		});
+	
+	$http.get("http://localhost:3000/bloques").success(function(response) {
+        	$scope.bloques = response;
+    	}).error(function(err){
+			console.log(err)
+		});
+	
+	$http.get("http://localhost:3000/departamentos").success(function(response) {
+        	$scope.departamentos = response;
+    	}).error(function(err){
+			console.log(err)
+		});
+		
+		$scope.changedUnidades = function(item){
+			$scope.ubicacion.unidad = item;
+			$scope.unidadSeleccionada;
+		}
+		
+		$scope.changedDepartamentos = function(item){
+			$scope.ubicacion.departamento = item;
+			$scope.departamentoSeleccionada;
+		}
+		
+		$scope.changedBloques = function(item){
+			$scope.ubicacion.bloque = item;
+			$scope.bloqueSeleccionada;
+		}
+	
+		$scope.ubicacion = new Ubicacion();	
+		$scope.addUbicacion = function () {
+			$scope.ubicacion.$save(function () {
+				$state.go('ubicaciones');
+			});
+		};
+	})
+	.controller('UbicacionEditController', function ($scope, $state, $stateParams, Ubicacion) {
+		$scope.updateUbicacion = function () {
+			$scope.ubicacion.$update(function () {
+				$state.go('ubicaciones');
+			});
+		};
+		$scope.loadUbicacion = function () {
+			$scope.ubicacion = Ubicacion.get({id : $stateParams.id});
+		};
+		$scope.loadUbicacion();
+	})

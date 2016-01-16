@@ -9,22 +9,36 @@ angular.module('ubicameUdeaApp.services', [])
         update: {
             method: 'PUT'
         }
-    });
-}).factory('TipoUnidad', function ($resource){
+    });})
+	.factory('TipoUnidad', function ($resource){
 	//return $resource('http://ubicame-udea.herokuapp.com/bloques/:id', { id : '@_id' }, {
 	return $resource('http://localhost:3000/tiposunidad/:id', { id : '@_id' }, {
         update: {
             method: 'PUT'
         }
-    });
-}).factory('Unidad', function ($resource){
+    });})
+	.factory('Unidad', function ($resource){
 	//return $resource('http://ubicame-udea.herokuapp.com/bloques/:id', { id : '@_id' }, {
 	return $resource('http://localhost:3000/unidades/:id', { id : '@_id' }, {
         update: {
             method: 'PUT'
         }
-    });
-}).service('popupService', function ($window) {
+    });})
+	.factory('Departamento', function ($resource){
+	//return $resource('http://ubicame-udea.herokuapp.com/bloques/:id', { id : '@_id' }, {
+	return $resource('http://localhost:3000/departamentos/:id', { id : '@_id' }, {
+        update: {
+            method: 'PUT'
+        }
+    });})
+	.factory('Ubicacion', function ($resource){
+	//return $resource('http://ubicame-udea.herokuapp.com/bloques/:id', { id : '@_id' }, {
+	return $resource('http://localhost:3000/ubicaciones/:id', { id : '@_id' }, {
+        update: {
+            method: 'PUT'
+        }
+    });})
+	.service('popupService', function ($window) {
     this.showPopup = function (message) {
         return $window.confirm(message);
     };

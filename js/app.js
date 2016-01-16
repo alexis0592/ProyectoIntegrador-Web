@@ -59,6 +59,42 @@ angular.module('ubicameUdeaApp').config(function ($stateProvider, $httpProvider)
         controller: 'UnidadEditController'
     });
 	
+	$stateProvider.state('departamentos', {
+        url: '/departamentos',
+        templateUrl: 'partials/departamentos.html',
+        controller: 'DepartamentoListController'
+    }).state('viewDepartamento', {
+		url: '/departamentos/:id/view',
+		templateUrl: 'partials/departamentos-view.html',
+		controller: 'DepartamentoViewController'
+    }).state('newDepartamento', {
+        url: '/departamentos/new',
+        templateUrl: 'partials/departamentos-add.html',
+        controller: 'DepartamentoCreateController'
+    }).state('editDepartamento', {
+        url: '/departamentos/:id/edit',
+        templateUrl: 'partials/departamentos-edit.html',
+        controller: 'DepartamentoEditController'
+    });
+	
+	$stateProvider.state('ubicaciones', {
+        url: '/ubicaciones',
+        templateUrl: 'partials/ubicaciones.html',
+        controller: 'UbicacionListController'
+    }).state('viewUbicacion', {
+		url: '/ubicaciones/:id/view',
+		templateUrl: 'partials/ubicaciones-view.html',
+		controller: 'UbicacionViewController'
+    }).state('newUbicacion', {
+        url: '/ubicaciones/new',
+        templateUrl: 'partials/ubicaciones-add.html',
+        controller: 'UbicacionCreateController'
+    }).state('editUbicacion', {
+        url: '/ubicaciones/:id/edit',
+        templateUrl: 'partials/ubicaciones-edit.html',
+        controller: 'UbicacionEditController'
+    });
+	
 	$stateProvider.state('home', {
         url: '/home',
         templateUrl: 'partials/home.html',

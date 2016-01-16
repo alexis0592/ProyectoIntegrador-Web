@@ -1,11 +1,22 @@
-<a ui-sref="newBloque" class="btn-primary btn-lg nodecoration">Agregar nuevo Bloque</a>
+<h1>Unidades</h1>
+<div>
+	<a ui-sref="newBloque" class="btn-primary btn-lg nodecoration pull-right">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		Agregar nuevo Bloque
+	</a>
+</div>
+<br/>
+<br/>
+<br/>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Lista de bloques
+	</div>
 <table class="table bloquetable">
-    <tr>
-        <td><h3>Todos los Bloques</h3></td>
-    </tr>
 	<tr>
-		<td style="display:none;">Id</td>
-		<td>Número del bloque</td>
+		<th style="display:none;">Id</th>
+		<th>Número del bloque</th>
+		<th>Opciones</th>
 	</tr>
     <tr ng-repeat="bloque in bloques">
         <td style="display:none;">{{bloque._id}}</td>
@@ -16,3 +27,4 @@
         </td>
     </tr>
 </table>
+</div>

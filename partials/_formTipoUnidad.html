@@ -1,12 +1,8 @@
+<input type="hidden" ng-model="tipoUnidad._id" class="form-control" id="id" placeholder="Id del tipo de unidad"/>
 <div class="form-group">
-    <label for="nombre" class="col-sm-2 control-label">Nombre del tipo de unidad</label>
-    <div class="col-sm-10">
-		<input type="hidden" ng-model="tipoUnidad._id" class="form-control" id="id" placeholder="Id del tipo de unidad"/>
-        <input type="text" ng-model="tipoUnidad.nombre" class="form-control" id="nombre" placeholder="Nombre del tipo de unidad"/>
-    </div>
+    <label for="nombre" class="control-label">Nombre</label>
+    <input type="text" ng-model="tipoUnidad.nombre" class="form-control" id="nombre" placeholder="Nombre del tipo de unidad"/>
 </div>
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" class="btn btn-primary" value="Guardar"/>
-    </div>
+	<input type="submit" class="btn btn-primary btn-lg" value="Guardar"/>
 </div>
