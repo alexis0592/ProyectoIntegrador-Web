@@ -1,0 +1,18 @@
+<a ui-sref="newTipoUnidad" class="btn-primary btn-lg nodecoration">Agregar nuevo tipo de unidad</a>
+<table class="table bloquetable">
+    <tr>
+        <td><h3>Todos los tipos de unidades</h3></td>
+    </tr>
+	<tr>
+		<td style="display:none;">Id</td>
+		<td>Nombre</td>
+	</tr>
+    <tr ng-repeat="tipoUnidad in tiposUnidad">
+        <td style="display:none;">{{tipoUnidad._id}}</td>
+		<td>{{tipoUnidad.nombre}}</td>
+        <td>
+            <a class="btn btn-primary" ui-sref="viewTipoUnidad({id:tipoUnidad._id})">Ver</a>
+            <a class="btn btn-danger"  ng-click="deleteTipoUnidad(tipoUnidad)">Eliminar</a>
+        </td>
+    </tr>
+</table>

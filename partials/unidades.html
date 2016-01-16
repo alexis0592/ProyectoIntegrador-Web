@@ -1,0 +1,20 @@
+<a ui-sref="newUnidad" class="btn-primary btn-lg nodecoration">Agregar nueva unidad</a>
+<table class="table bloquetable">
+    <tr>
+        <td><h3>Todos las unidades</h3></td>
+    </tr>
+	<tr>
+		<td style="display:none;">Id</td>
+		<td>Nombre</td>
+		<td>Tipo Unidad</td>
+	</tr>
+    <tr ng-repeat="unidad in unidades">
+        <td style="display:none;">{{unidad._id}}</td>
+		<td>{{unidad.nombre}}</td>
+		<td>{{unidad.tipoUnidad.nombre}}</td>
+        <td>
+            <a class="btn btn-primary" ui-sref="viewUnidad({id:unidad._id})">Ver</a>
+            <a class="btn btn-danger"  ng-click="deleteUnidad(unidad)">Eliminar</a>
+        </td>
+    </tr>
+</table>
