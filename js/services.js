@@ -38,6 +38,13 @@ angular.module('ubicameUdeaApp.services', [])
             method: 'PUT'
         }
     });})
+	.factory('Usuario', function ($resource){
+	//return $resource('http://ubicame-udea.herokuapp.com/bloques/:id', { id : '@_id' }, {
+	return $resource('http://localhost:3000/usuarios/:id', { id : '@_id' }, {
+        update: {
+            method: 'PUT'
+        }
+    });})
 	.service('popupService', function ($window) {
     this.showPopup = function (message) {
         return $window.confirm(message);

@@ -226,3 +226,36 @@ angular.module('ubicameUdeaApp.controllers', [])
 		};
 		$scope.loadUbicacion();
 	})
+//CONTROLLERS USUARIOS
+	.controller('UsuarioListController', function ($scope, $state, popupService, $window, Usuario) {
+		$scope.usuarios = Usuario.query();
+		$scope.deleteUsuario = function (usuario) {
+			if (popupService.showPopup('¿Realmente quiere eliminar este registro?')) {
+				usuario.$delete(function () {
+					$scope.usuarios = Usuario.query();
+				});
+			}
+		};
+	})
+	.controller('UsuarioViewController', function ($scope, $stateParams, Usuario) {
+		$scope.usuario = Usuario.get({id : $stateParams.id});
+	})
+	.controller('UsuarioCreateController', function ($scope, $state, $stateParams, Usuario) {
+		$scope.usuario = new Usuario();
+		$scope.addUsuario = function () {
+			$scope.usuario.$save(function () {
+				$state.go('usuarios');
+			});
+		};
+	})
+	.controller('UsuarioEditController', function ($scope, $state, $stateParams, Usuario) {
+		$scope.updateUsuario = function () {
+			$scope.usuario.$update(function () {
+				$state.go('usuarios');
+			});
+		};
+		$scope.loadUsuario = function () {
+			$scope.usuario = Usuario.get({id : $stateParams.id});
+		};
+		$scope.loadUsuario();
+	})

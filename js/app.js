@@ -95,11 +95,34 @@ angular.module('ubicameUdeaApp').config(function ($stateProvider, $httpProvider)
         controller: 'UbicacionEditController'
     });
 	
+	$stateProvider.state('usuarios', {
+        url: '/usuarios',
+        templateUrl: 'partials/usuarios.html',
+        controller: 'UsuarioListController'
+    }).state('viewUsuario', {
+		url: '/usuarios/:id/view',
+		templateUrl: 'partials/usuarios-view.html',
+		controller: 'UsuarioViewController'
+    }).state('newUsuario', {
+        url: '/usuarios/new',
+        templateUrl: 'partials/usuarios-add.html',
+        controller: 'UsuarioCreateController'
+    }).state('editUsuario', {
+        url: '/usuarios/:id/edit',
+        templateUrl: 'partials/usuarios-edit.html',
+        controller: 'UsuarioEditController'
+    });
+	
+	$stateProvider.state('login', {
+        url: '/login',
+        templateUrl: 'partials/login.html',
+    });
+	
 	$stateProvider.state('home', {
         url: '/home',
         templateUrl: 'partials/home.html',
     });
 	
 }).run(function ($state) {
-	$state.go('home');
+	$state.go('login');
 });
