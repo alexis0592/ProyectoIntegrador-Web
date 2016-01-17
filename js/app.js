@@ -115,7 +115,8 @@ angular.module('ubicameUdeaApp').config(function ($stateProvider, $httpProvider)
 	
 	$stateProvider.state('login', {
         url: '/login',
-        templateUrl: 'partials/login.html',
+        templateUrl: 'login.html',
+		controller: 'LoginController'
     });
 	
 	$stateProvider.state('home', {

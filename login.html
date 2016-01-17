@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="ubicameUdeaApp">
+<html data-ng-app="ubicameUdeaApp" ng-controller="LoginController">
 <head lang="en">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,22 +17,24 @@
 				<h1 class="text-center">Ubícame UdeA</h1>
 				<br/>
 				<br/>
-				<div class="row">
+				<div class="row" ng>
 					<div class="col-md-6">
 						<img src="images/logo_udea.jpg" alt="Logo UdeA" class="img-thumbnail" width="300">
 					</div>
 					<div class="col-md-6">
-						<div class="form-group">
-							<label for="nombreUsuario" class="control-label">Nombre de usuario</label>
-							<input type="text" ng-model="usuario.nombre_usuario" class="form-control" id="nombreUsuario"/>
-						</div>
-						<div class="form-group">
-							<label for="contrasena" class="control-label">Contraseña</label>
-							<input type="text" ng-model="usuario.contrasena" class="form-control" id="contrasena"/>
-						</div>
-						<div class="form-group">
-							<input type="submit" class="btn btn-primary btn-lg" value="Entrar"/>
-						</div>
+						<form class="form-horizontal" role="form" ng-submit="loginUsuario()">
+							<div class="form-group">
+								<label for="nombreUsuario" class="control-label">Nombre de usuario</label>
+								<input type="text" ng-model="usuario.nombre_usuario" class="form-control" id="nombreUsuario"/>
+							</div>
+							<div class="form-group">
+								<label for="contrasena" class="control-label">Contraseña</label>
+								<input type="password" ng-model="usuario.contrasena" class="form-control" id="contrasena"/>
+							</div>
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary btn-lg" value="Entrar"/>
+							</div>
+						</form>
 					</div>
 				</div>
 
